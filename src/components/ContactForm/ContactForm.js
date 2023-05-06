@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { FormStyles, Label, AddContactButton } from './ContactForm.styled';
+import {
+  FormStyles,
+  Label,
+  AddContactButton,
+  Loader,
+} from './ContactForm.styled';
 import { Input } from 'components/Filter/Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { getContacts, getIsLoading } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 
 export function Form() {
@@ -10,6 +15,7 @@ export function Form() {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  const isLoading = useSelector(getIsLoading);
   const handleChange = e => {
     const { value, name } = e.target;
     if (name === 'name') {
@@ -69,7 +75,17 @@ export function Form() {
           onChange={handleChange}
         />
       </Label>
-      <AddContactButton type="submit">Add to contact list</AddContactButton>
+      <AddContactButton type="submit" disabled={isLoading}>
+        {isLoading && (
+          <Loader
+            color={`white`}
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        )}
+        Add to contact list
+      </AddContactButton>
     </FormStyles>
   );
 }

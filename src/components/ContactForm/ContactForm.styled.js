@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { ClipLoader } from 'react-spinners';
 
 export const FormStyles = styled.form`
   display: flex;
@@ -12,6 +13,7 @@ export const Label = styled.label`
   margin-bottom: 10px;
 `;
 export const AddContactButton = styled.button`
+  position: relative;
   padding: 8px;
   background-color: #808080;
   color: white;
@@ -22,4 +24,13 @@ export const AddContactButton = styled.button`
   :active {
     transform: scale(0.9);
   }
+  :disabled {
+    background-color: rgb(128, 128, 128, 0.5);
+  }
+`;
+
+export const Loader = styled(ClipLoader)`
+  position: absolute;
+  top: 4px;
+  left: 6px;
 `;
