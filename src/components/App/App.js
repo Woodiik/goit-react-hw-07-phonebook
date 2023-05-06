@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
@@ -8,14 +8,14 @@ import { getContacts } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
 
 export function App() {
-  const isFirstRender = useRef(true);
+  //const isFirstRender = useRef(true);
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    //if (isFirstRender.current) {
+    //  isFirstRender.current = false;
+    //  return;
+    //}
 
     dispatch(fetchContacts());
   }, [dispatch]);

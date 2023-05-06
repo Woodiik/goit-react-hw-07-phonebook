@@ -30,7 +30,6 @@ const contactSlice = createSlice({
     },
     [deleteContact.pending](state) {
       state.isLoading = true;
-      console.log(`deleting`);
     },
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
